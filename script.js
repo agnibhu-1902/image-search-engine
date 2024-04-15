@@ -25,13 +25,12 @@ const searchImages = async () => {
                 const imageLink = document.createElement('a')
                 imageLink.href = result.links.html
                 imageLink.target = '_blank'
-                if (i <= 4 && page === 1) {
-                    image.style.visibility = 'hidden'
-                    image.style.width = '0'
-                    image.style.height = '0'
-                }
                 imageLink.appendChild(image)
                 searchResult.appendChild(imageLink)
+                if (i <= 4 && page === 1)
+                    searchResult.style.gridTemplateColumns = 'repeat(auto-fit, minmax(15em, 18.7em))'
+                else
+                    searchResult.style.gridTemplateColumns = 'repeat(auto-fit, minmax(15em, 1fr))'
                 if (i === 12)
                     showMoreButton.style.display = 'block'
                 else
