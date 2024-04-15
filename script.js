@@ -16,16 +16,29 @@ const searchImages = async () => {
     const response = await fetch(url)
     const data = await response.json()
     const results = data.results
+    let i = 1
     results.map((result) => {
-        const image = document.createElement('img')
-        image.src = result.urls.regular
-        const imageLink = document.createElement('a')
-        imageLink.href = result.links.html
-        imageLink.target = '_blank'
-        imageLink.appendChild(image)
-        searchResult.appendChild(imageLink)
+        (function(i) {
+            setTimeout(() => {
+                const image = document.createElement('img')
+                image.src = result.urls.regular
+                const imageLink = document.createElement('a')
+                imageLink.href = result.links.html
+                imageLink.target = '_blank'
+                if (i <= 4 && page === 1) {
+                    image.style.visibility = 'hidden'
+                    image.style.width = '0'
+                    image.style.height = '0'
+                }
+                imageLink.appendChild(image)
+                searchResult.appendChild(imageLink)
+                if (i === 12)
+                    showMoreButton.style.display = 'block'
+                else
+                    showMoreButton.style.display = 'none'
+            }, i * 300)
+        })(i++)
     })
-    showMoreButton.style.display = 'block'
 }
 
 searchForm.addEventListener('submit', (e) => {
