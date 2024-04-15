@@ -81,8 +81,7 @@ form button:hover {
 
 #search-result img {
     width: 100%;
-    height: 100%;
-    height: 15em;
+    height: 20em;
     object-fit: fill;
     border-radius: 10px;
     transition: transform 0.3s ease-in;
