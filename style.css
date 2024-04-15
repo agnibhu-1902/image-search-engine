@@ -110,3 +110,9 @@ form button:hover {
 #show-more-btn:hover {
     background-color: #bf2116;
 }
+
+@media (max-width: 568px) {
+    #search-result img:hover {
+        transform: scale(105%, 105%);
+    }
+}
