@@ -27,10 +27,6 @@ const searchImages = async () => {
                 imageLink.target = '_blank'
                 imageLink.appendChild(image)
                 searchResult.appendChild(imageLink)
-                if (i <= 4 && page === 1)
-                    searchResult.style.gridTemplateColumns = 'repeat(auto-fit, minmax(15em, 18.7em))'
-                else
-                    searchResult.style.gridTemplateColumns = 'repeat(auto-fit, minmax(15em, 1fr))'
                 if (i === 12)
                     showMoreButton.style.display = 'block'
                 else
