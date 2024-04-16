@@ -9,6 +9,15 @@
     }
 }
 
+@keyframes blink {
+    from, to {
+        opacity: 0;
+    }
+    50% {
+        opacity: 100%;
+    }
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -126,8 +135,23 @@ h1 {
     background-color: #bf2116;
 }
 
+.container h1 span {
+    color: #02f383;
+    text-decoration: underline;
+}
+
+.blink {
+    font-weight: 300;
+    font-size: larger;
+    color: white;
+    animation: blink 1s infinite;
+}
+
 @media (max-width: 568px) {
     #search-result img:hover {
         transform: scale(105%, 105%);
+    }
+    .container h1 {
+        font-size: 1.5rem;
     }
 }

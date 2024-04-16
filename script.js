@@ -5,6 +5,17 @@ const crossIcon = document.querySelector('#search-form img')
 const searchResult = document.getElementById('search-result')
 const showMoreButton = document.getElementById('show-more-btn')
 
+const spanTag = '<span class="blink">|</span>'
+let searchElement = document.querySelector('.container h1 span')
+const text = 'Search'
+let n = 0
+var typeTimer = setInterval(() => {
+    searchElement.innerHTML = text.slice(0, n) + spanTag
+    n += 1
+    if (n === text.length + 1)
+        clearInterval(typeTimer)
+}, 800)
+
 let keyword = ''
 let page = 1
 const perPage = 12
