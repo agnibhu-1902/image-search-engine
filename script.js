@@ -10,34 +10,38 @@ let page = 1
 const perPage = 12
 
 const searchImages = async () => {
-    keyword = searchBox.value
-    const url = `https://api.unsplash.com/search/photos?page=${page}&query=${keyword}&per_page=${perPage}&client_id=${access_key}`
     if (page === 1)
         searchResult.innerHTML = ""
-    const response = await fetch(url)
-    const data = await response.json()
-    const results = data.results
-    let i = 1
-    results.map((result) => {
-        (function(i) {
-            setTimeout(() => {
-                const figure = document.createElement('figure')
-                const image = document.createElement('img')
-                image.src = result.urls.regular
-                image.alt = result.description
-                const imageLink = document.createElement('a')
-                imageLink.href = result.links.html
-                imageLink.target = '_blank'
-                imageLink.appendChild(image)
-                figure.appendChild(imageLink)
-                searchResult.appendChild(figure)
-                if (i === 12)
-                    showMoreButton.style.display = 'block'
-                else
-                    showMoreButton.style.display = 'none'
-            }, i * 300)
-        })(i++)
-    })
+    if (searchBox.value === '')
+        showMoreButton.style.display = 'none'
+    else {
+        keyword = searchBox.value
+        const url = `https://api.unsplash.com/search/photos?page=${page}&query=${keyword}&per_page=${perPage}&client_id=${access_key}`
+        const response = await fetch(url)
+        const data = await response.json()
+        const results = data.results
+        let i = 1
+        results.map((result) => {
+            (function(i) {
+                setTimeout(() => {
+                    const figure = document.createElement('figure')
+                    const image = document.createElement('img')
+                    image.src = result.urls.regular
+                    image.alt = result.description
+                    const imageLink = document.createElement('a')
+                    imageLink.href = result.links.html
+                    imageLink.target = '_blank'
+                    imageLink.appendChild(image)
+                    figure.appendChild(imageLink)
+                    searchResult.appendChild(figure)
+                    if (i === 12)
+                        showMoreButton.style.display = 'block'
+                    else
+                        showMoreButton.style.display = 'none'
+                }, i * 300)
+            })(i++)
+        })
+    }
 }
 
 searchForm.addEventListener('submit', (e) => {
