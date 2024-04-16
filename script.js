@@ -1,6 +1,7 @@
 const access_key = '75LR80E9ayKIHljlXMIJnq3fQ_nSw3e0OfLYsU6aayo'
 const searchForm = document.getElementById('search-form')
 const searchBox = document.getElementById('search-box')
+const crossIcon = document.querySelector('#search-form img')
 const searchResult = document.getElementById('search-result')
 const showMoreButton = document.getElementById('show-more-btn')
 
@@ -20,13 +21,16 @@ const searchImages = async () => {
     results.map((result) => {
         (function(i) {
             setTimeout(() => {
+                const figure = document.createElement('figure')
                 const image = document.createElement('img')
                 image.src = result.urls.regular
+                image.alt = result.description
                 const imageLink = document.createElement('a')
                 imageLink.href = result.links.html
                 imageLink.target = '_blank'
                 imageLink.appendChild(image)
-                searchResult.appendChild(imageLink)
+                figure.appendChild(imageLink)
+                searchResult.appendChild(figure)
                 if (i === 12)
                     showMoreButton.style.display = 'block'
                 else
@@ -45,4 +49,19 @@ searchForm.addEventListener('submit', (e) => {
 showMoreButton.addEventListener('click', () => {
     page++
     searchImages()
+})
+
+searchBox.addEventListener('input', () => {
+    crossIcon.style.display = 'block'
+})
+
+crossIcon.addEventListener('click', () => {
+    searchBox.value = ''
+    crossIcon.style.display = 'none'
+    searchBox.focus()
+})
+
+searchBox.addEventListener('focusout', () => {
+    if (searchBox.value === '')
+        crossIcon.style.display = 'none'
 })
