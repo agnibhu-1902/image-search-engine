@@ -145,7 +145,7 @@ h1 {
 .blink {
     font-weight: 300;
     font-size: larger;
-    color: white;
+    text-decoration: none;
     animation: blink 1s infinite;
 }
 
