@@ -4,6 +4,7 @@ const searchBox = document.getElementById('search-box')
 const crossIcon = document.querySelector('#search-form img')
 const searchResult = document.getElementById('search-result')
 const showMoreButton = document.getElementById('show-more-btn')
+const footer = document.querySelector('footer')
 
 const spanTag = '<span class="blink">|</span>'
 let searchElement = document.querySelector('.container h1 span')
@@ -23,8 +24,10 @@ const perPage = 12
 const searchImages = async () => {
     if (page === 1)
         searchResult.innerHTML = ""
-    if (searchBox.value === '')
+    if (searchBox.value === '') {
         showMoreButton.style.display = 'none'
+        footer.style.display = 'none'
+    }
     else {
         keyword = searchBox.value
         const url = `https://api.unsplash.com/search/photos?page=${page}&query=${keyword}&per_page=${perPage}&client_id=${access_key}`
@@ -45,10 +48,14 @@ const searchImages = async () => {
                     imageLink.appendChild(image)
                     figure.appendChild(imageLink)
                     searchResult.appendChild(figure)
-                    if (i === 12)
+                    if (i === 12) {
                         showMoreButton.style.display = 'block'
-                    else
+                        footer.style.display = 'block'
+                    }
+                    else {
                         showMoreButton.style.display = 'none'
+                        footer.style.display = 'none'
+                    }
                 }, i * 300)
             })(i++)
         })
