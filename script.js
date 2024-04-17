@@ -30,7 +30,7 @@ const searchImages = async () => {
     }
     else {
         keyword = searchBox.value
-        const url = `https://api.unsplash.com/search/photos?page=${page}&query=${keyword}&per_page=${perPage}&client_id=${access_key}`
+        const url = `https://api.unsplash.com/search/photos?page=${page}&query=${keyword}&per_page=${perPage}&client_id=${access_key}&orientation=squarish`
         const response = await fetch(url)
         const data = await response.json()
         const results = data.results
