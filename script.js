@@ -7,15 +7,15 @@ const showMoreButton = document.getElementById('show-more-btn')
 const footer = document.querySelector('footer')
 
 const spanTag = '<span class="blink">|</span>'
-let searchElement = document.querySelector('.container h1 span')
-const text = 'Search'
+let searchElement = document.querySelector('.container p span')
+const text = 'Search the web for a wide variety of images'
 let n = 0
 var typeTimer = setInterval(() => {
     searchElement.innerHTML = text.slice(0, n) + spanTag
     n += 1
     if (n === text.length + 1)
         clearInterval(typeTimer)
-}, 800)
+}, 100)
 
 let keyword = ''
 let page = 1
