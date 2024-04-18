@@ -40,7 +40,7 @@ const searchImages = async () => {
                 setTimeout(() => {
                     const figure = document.createElement('figure')
                     const image = document.createElement('img')
-                    image.src = result.urls.small
+                    image.src = result.urls.regular
                     image.alt = result.description
                     const imageLink = document.createElement('a')
                     imageLink.href = result.links.html
