@@ -12,8 +12,8 @@ const text = 'Search the web for a wide variety of images'
 let n = 0
 var typeTimer = setInterval(() => {
     searchElement.innerHTML = text.slice(0, n) + spanTag
-    n += 1
-    if (n === text.length + 1)
+    n++
+    if (n === text.length)
         clearInterval(typeTimer)
 }, 100)
 
