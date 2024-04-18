@@ -13,7 +13,7 @@ let n = 0
 var typeTimer = setInterval(() => {
     searchElement.innerHTML = text.slice(0, n) + spanTag
     n++
-    if (n === text.length)
+    if (n === text.length + 1)
         clearInterval(typeTimer)
 }, 100)
 
